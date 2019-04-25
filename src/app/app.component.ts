@@ -13,7 +13,7 @@ import { Hero } from './hero';
       {{ hero.name }}
       </li>
   </ul>
-  <p *ngIf="aheroes | async as sheroes; sheroes.length > 3">There are many heroes!</p>
+  <p *ngIf="(aheroes | async)?.length > 3">There are many heroes!</p>
 `
 })
 export class AppComponent {
