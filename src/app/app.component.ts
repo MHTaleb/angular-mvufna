@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { of } from 'rxjs';
 import { Hero } from './hero';
 
 @Component({
@@ -9,11 +9,11 @@ import { Hero } from './hero';
   <h2>My favorite hero is: {{myHero.name}}</h2>
   <p>Heroes:</p>
   <ul>
-    <li *ngFor="let hero of heroes">
+    <li *ngFor="let hero of aheroes | asynch">
       {{ hero.name }}
       </li>
   </ul>
-  <p *ngIf="heroes.length > 3">There are many heroes!</p>
+  <p *ngIf="aheroes.length > 3">There are many heroes!</p>
 `
 })
 export class AppComponent {
@@ -24,6 +24,7 @@ export class AppComponent {
     new Hero(15, 'Magneta'),
     new Hero(20, 'Tornado')
   ];
+  aheroes = of(this.heroes);
   myHero = this.heroes[0];
 }
 
